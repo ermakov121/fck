@@ -16,12 +16,11 @@ public class TK_A1 extends BaseTest {
     private final String email = "test" + Helper.genEmail() + "@mail.ru";
     private final String company = "ООО \"СЕНТЯБРИНКА\"";
 
-    MainPage mainPage = new MainPage();
     IndividualPage individualPage = new IndividualPage();
 
     @Test
     public void test(){
-        mainPage.selectInAllDropDownList("Физические лица");
+        MainPage.selectInAllDropDownList("Физические лица");
         individualPage.clickCreateIndividualButton();
         individualPage.fillFormIndividual(secondName, name, surname, categoryContact, inn, position, phone, email);
         individualPage.checkIndividual(secondName, name, surname, categoryContactValue, company, phone, email);

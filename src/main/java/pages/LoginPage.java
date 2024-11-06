@@ -1,9 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import junit.framework.TestCase;
 
 
 import static com.codeborne.selenide.Condition.*;
@@ -11,23 +9,28 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
 
-    private final SelenideElement loginField = $(By.id("user_name"));
-    private final SelenideElement passwordField = $(By.id("username_password"));
-    private final SelenideElement loginButton = $(By.id("bigbutton"));
-    private final SelenideElement checkLoginSpan = $(By.xpath("//span[. = 'Мои физические лица']"));
+    protected static final SelenideElement loginField = $(By.id("user_name"));
+    protected static final SelenideElement passwordField = $(By.id("username_password"));
+    protected static final SelenideElement loginButton = $(By.id("bigbutton"));
+    protected static final SelenideElement checkLoginSpan = $(By.xpath("//span[. = 'Мои физические лица']"));
 
-    @Step("Логин пользователя и проверка логина")
-    public LoginPage login(String login, String password){
-        try{
-            loginField.shouldBe(visible).setValue(login);
-            passwordField.setValue(password);
-            loginButton.click();
-            checkLoginSpan.shouldBe(visible);
-        }
-        catch (Throwable e){
-            TestCase.fail("Ошибка при логине");
-            e.printStackTrace();
-        }
-        return this;
+    // Метод для заполения поля с логином
+    public static void fillLoginField(String login){
+        loginField.shouldBe(visible).setValue(login);
+    }
+
+    // Метод для заполнения поля с паролем
+    public static void fillPasswordField(String password){
+        passwordField.shouldBe(visible).setValue(password);
+    }
+
+    // Метод нажимает кнопку логина
+    public static void clickLoginButton(){
+        loginButton.click();
+    }
+
+    // Метод проверяет, что логин произошел и отображается элемент на главной странице после логина
+    public static void checkLoginSpan(){
+        checkLoginSpan.shouldBe(visible);
     }
 }

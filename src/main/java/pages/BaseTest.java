@@ -2,6 +2,7 @@ package pages;
 
 import config.WebDriverConfig;
 import org.junit.jupiter.api.*;
+import steps.LoginSteps;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -14,7 +15,7 @@ public class BaseTest {
         WebDriverConfig.setUp();
         Helper.disableHTTPSRedirectionForDomain(Helper.getConfig("domain"));
         open(Helper.getConfig("url"));
-        loginPage.login(login, password);
+        LoginSteps.login(login, password);
     }
 
     @AfterEach
