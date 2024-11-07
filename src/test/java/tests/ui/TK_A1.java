@@ -1,7 +1,10 @@
 package tests.ui;
 
+import helper.GenerateData;
+import io.qameta.allure.Description;
 import org.junit.jupiter.api.*;
 import pages.*;
+import steps.IndividualPageSteps;
 
 public class TK_A1 extends BaseTest {
 
@@ -13,17 +16,16 @@ public class TK_A1 extends BaseTest {
     private final String inn = "6321277661";
     private final String position = "менеджер";
     private final String phone = "0987654321";
-    private final String email = "test" + Helper.genEmail() + "@mail.ru";
+    private final String email = "test" + GenerateData.genEmail() + "@mail.ru";
     private final String company = "ООО \"СЕНТЯБРИНКА\"";
 
-    IndividualPage individualPage = new IndividualPage();
 
     @Test
-    public void test(){
+    @Description("Создание физического лица")
+    public void TK_A1() {
         MainPage.selectInAllDropDownList("Физические лица");
-        individualPage.clickCreateIndividualButton();
-        individualPage.fillFormIndividual(secondName, name, surname, categoryContact, inn, position, phone, email);
-        individualPage.checkIndividual(secondName, name, surname, categoryContactValue, company, phone, email);
-        individualPage
+        IndividualPage.clickCreateIndividualButton();
+        IndividualPageSteps.fillFormIndividual(secondName, name, surname, categoryContact, inn, position, phone, email);
+        IndividualPageSteps.checkIndividual(secondName, name, surname, categoryContactValue, company, phone, email);
     }
 }

@@ -1,19 +1,21 @@
 package pages;
 
 import config.WebDriverConfig;
+import helper.CommonHelpers;
 import org.junit.jupiter.api.*;
 import steps.LoginSteps;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class BaseTest {
-    private final String login = Helper.getConfig("login");
-    private final String password = Helper.getConfig("password");
+    private final String login = CommonHelpers.getConfig("login");
+    private final String password = CommonHelpers.getConfig("password");
+
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         WebDriverConfig.setUp();
-        Helper.disableHTTPSRedirectionForDomain(Helper.getConfig("domain"));
-        open(Helper.getConfig("url"));
+        CommonHelpers.disableHTTPSRedirectionForDomain(CommonHelpers.getConfig("domain"));
+        open(CommonHelpers.getConfig("url"));
         LoginSteps.login(login, password);
     }
 

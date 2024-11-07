@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import helper.CommonHelpers;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.*;
@@ -14,7 +15,7 @@ public class MainPage {
     // Метод для открытия раздела в выпадашке "Все"
     public static void selectInAllDropDownList(String item){
         allDropDownList.hover();
-        Helper.killDouble("//li[@class = 'topnav all']//a[. = '" + item + "']").shouldBe(visible).click();
+        CommonHelpers.killDouble("//li[@class = 'topnav all']//a[. = '" + item + "']").shouldBe(visible).click();
         $(By.xpath("//h2[contains(., '" + item + "')]")).shouldBe(visible);
     }
 }

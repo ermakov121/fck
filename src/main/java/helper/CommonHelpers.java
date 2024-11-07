@@ -1,4 +1,4 @@
-package pages;
+package helper;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -8,21 +8,19 @@ import org.openqa.selenium.Keys;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.Random;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Helper {
-    public static void disableHTTPSRedirectionForDomain(String domain){
+public class CommonHelpers {
+    private final static Properties properties;
+
+    // Метод добавляет сайт в доверенные
+    public static void disableHTTPSRedirectionForDomain(String domain) {
         open("chrome://settings/content/insecureContent");
-        actions()
-                .sendKeys(Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER,Keys.TAB,"[*.]"+domain,Keys.TAB,Keys.TAB,Keys.ENTER)
-                .build()
-                .perform();
+        actions().sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, Keys.ENTER, Keys.TAB, "[*.]" + domain, Keys.TAB, Keys.TAB, Keys.ENTER).build().perform();
     }
 
-    private final static Properties properties;
 
     static {
         properties = new Properties();
@@ -41,20 +39,25 @@ public class Helper {
     }
 
     // Для отсеивания невидимых элементов на странице
-    public static SelenideElement killDouble(String xpath){
+    public static SelenideElement killDouble(String xpath) {
         SelenideElement visibleElement = null;
         ElementsCollection list = $$(By.xpath(xpath));
-        for (SelenideElement item : list){
-            if (item.is(visible)){
+        for (SelenideElement item : list) {
+            if (item.is(visible)) {
                 visibleElement = item;
             }
         }
         return visibleElement;
     }
 
-    public static String genEmail(){
-        Random rnd = new Random();
-        int n = 100000 + rnd.nextInt(900000);
-        return String.valueOf(n);
+    // Метод для заполнения текстовых полей
+    public static void fillTextField(String fieldName, String value){
+        $(By.xpath("//div[contains(., '" + fieldName + "') and contains(@class, 'label')]/following-sibling::div/input"))
+                .shouldBe(visible).setValue(value);
+    }
+
+    // Метол для заполнения полей с выпадающим списком (select)
+    public static void fillSelectField(String id, String value){
+        $(By.id(id)).selectOptionByValue(value);
     }
 }
