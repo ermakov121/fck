@@ -24,5 +24,6 @@ public class TK_A1 extends BaseTest {
         individualPage.clickCreateIndividualButton();
         individualPage.fillFormIndividual(secondName, name, surname, categoryContact, inn, position, phone, email);
         individualPage.checkIndividual(secondName, name, surname, categoryContactValue, company, phone, email);
+        individualPage
     }
 }

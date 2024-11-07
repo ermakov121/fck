@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class BaseTest {
     private final String login = Helper.getConfig("login");
     private final String password = Helper.getConfig("password");
-    LoginPage loginPage = new LoginPage();
     @BeforeEach
     public void setUp(){
         WebDriverConfig.setUp();
