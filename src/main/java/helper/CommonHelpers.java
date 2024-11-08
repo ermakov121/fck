@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -59,5 +60,18 @@ public class CommonHelpers {
     // Метол для заполнения полей с выпадающим списком (select)
     public static void fillSelectField(String id, String value){
         $(By.id(id)).selectOptionByValue(value);
+    }
+
+    // Методя для заполнения полей, в которых надо вводить значение и потом выбрать из предложенных
+    public static void fillAndClickField(String fieldName, String value){
+        $(By.xpath("//div[contains(., '" + fieldName + "') and contains(@class, 'label')]/following-sibling::div/input"))
+                .shouldBe(visible).setValue(value);
+        $(By.xpath("//li[. = 'менеджер']")).shouldBe(visible).click();
+    }
+
+    public static int getCurrentIndeTab(){
+        String currentTab = webdriver().driver().getWebDriver().getWindowHandle();
+        ArrayList<String> tabs = new ArrayList<String>(webdriver().driver().getWebDriver().getWindowHandles());
+        return tabs.indexOf(currentTab);
     }
 }

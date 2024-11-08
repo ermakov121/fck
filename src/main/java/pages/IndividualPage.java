@@ -23,7 +23,9 @@ public class IndividualPage {
 
     // Метод для заполнения поля "Телефон"
     public static void fillPhone(String phoneValue) {
+        phoneInput.click();
         phoneInput.setValue(phoneValue);
+
     }
 
     // Метод для заполнения поля "E-mail"

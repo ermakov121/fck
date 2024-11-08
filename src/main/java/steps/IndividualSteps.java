@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class IndividualPageSteps extends IndividualPage {
+public class IndividualSteps extends IndividualPage {
 
     @Step("Заполняем данные физ. лица и сохраняем")
     public static void fillFormIndividual(String secondName, String name, String surname, String categoryContact, String inn, String position, String phone, String email){
@@ -20,7 +20,7 @@ public class IndividualPageSteps extends IndividualPage {
         CommonHelpers.fillTextField("Отчество", surname);
         CommonHelpers.fillSelectField("contact_category", categoryContact);
         fillCompany(inn);
-        CommonHelpers.fillTextField("Должность", position);
+        CommonHelpers.fillAndClickField("Должность", position);
         fillPhone(phone);
         fillEmail(email);
         clickSaveAndExitButton();

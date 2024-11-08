@@ -2,6 +2,7 @@ package pages;
 
 import config.WebDriverConfig;
 import helper.CommonHelpers;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
 import steps.LoginSteps;
 
@@ -12,6 +13,7 @@ public class BaseTest {
     private final String password = CommonHelpers.getConfig("password");
 
     @BeforeEach
+    @Step("Запускаем браузер, авторизуемся на стенде ФЦК")
     public void setUp() {
         WebDriverConfig.setUp();
         CommonHelpers.disableHTTPSRedirectionForDomain(CommonHelpers.getConfig("domain"));
@@ -20,6 +22,7 @@ public class BaseTest {
     }
 
     @AfterEach
+    @Step("Закрываем браузер")
     public void tearDown() {
         // Скриншот после каждого теста
         screenshot("screenshot-" + System.currentTimeMillis());
