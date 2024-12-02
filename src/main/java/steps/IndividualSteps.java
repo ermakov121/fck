@@ -23,7 +23,7 @@ public class IndividualSteps extends IndividualPage {
         CommonHelpers.fillAndClickField("Должность", position);
         fillPhone(phone);
         fillEmail(email);
-        clickSaveAndExitButton();
+        CommonHelpers.clickSaveAndExitButton();
         $(By.xpath("//h2[. = 'Сохранить физ. лицо']")).shouldBe(visible);
         $(By.xpath("(//input[@title = 'Сохранить и выйти'])[1]")).click();
     }

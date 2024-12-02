@@ -16,7 +16,7 @@ public class CreateIndividual extends BaseTest {
     protected final String inn = "6321277661";
     protected final String position = "менеджер";
     protected final String phone = "0987654321";
-    protected final String email = "test" + GenerateData.genEmail() + "@mail.ru";
+    protected final String email = "test" + GenerateData.genNumbersForEmail() + "@mail.ru";
     protected final String company = "ООО \"СЕНТЯБРИНКА\"";
 
     @BeforeEach

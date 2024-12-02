@@ -18,7 +18,7 @@ public class IndividualPage {
     // Метод для перехода на форму создания нового физ. лица
     public static void clickCreateIndividualButton() {
         createIndividualButton.shouldBe(visible).click();
-        $(By.xpath("//h2[@class = 'module-title-text' and contains(., 'Создать')]")).shouldBe(visible);
+        CommonHelpers.checkCreateForm();
     }
 
     // Метод для заполнения поля "Телефон"
@@ -31,10 +31,5 @@ public class IndividualPage {
     // Метод для заполнения поля "E-mail"
     public static void fillEmail(String emailValue) {
         CommonHelpers.killDouble("//input[@type = 'email']").setValue(emailValue);
-    }
-
-    // Клик по кнопке "Сохранить и Выйти"
-    public static void clickSaveAndExitButton() {
-        saveAndExitButton.click();
     }
 }
