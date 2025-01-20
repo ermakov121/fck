@@ -14,7 +14,7 @@ import steps.MainSteps;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class TK_A3 extends CreateIndividual {
+public class TK_A3Test extends CreateIndividual {
     private final String category = "Сотрудник ФЦК";
     private final String subtype = "Консультация";
     private final String subject = "Работа платформы";

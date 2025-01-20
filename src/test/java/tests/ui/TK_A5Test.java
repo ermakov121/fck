@@ -7,7 +7,7 @@ import pages.BaseTest;
 import pages.MainPage;
 import steps.AppealsSteps;
 
-public class TK_A5 extends BaseTest {
+public class TK_A5Test extends BaseTest {
     private final String category = "Сотрудник ФЦК";
     private final String subtype = "Консультация";
     private final String subject = "Работа ФЦК";
@@ -15,6 +15,7 @@ public class TK_A5 extends BaseTest {
     private final String description = "Текст описания";
     private final String connect = "Телефон";
     private final String phone = GenerateData.genNumberForPhone();
+    private final String checkChapter = " Работа ФЦК ";
 
     @Test
     @Description("Создание обращения от анонимного пользователя")
@@ -26,7 +27,7 @@ public class TK_A5 extends BaseTest {
         AppealsSteps.fillDescriptionField(description);
         AppealsSteps.selectAnonConnectAndPhone(connect, phone);
         AppealsSteps.clickSaveAndExit();
-        AppealsSteps.checkChapter(" Работа ФЦК ");
+        AppealsSteps.checkChapter(checkChapter);
         AppealsSteps.checkPhone(phone);
     }
 }

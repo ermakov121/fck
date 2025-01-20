@@ -75,7 +75,7 @@ public class AppealsSteps extends AppealsPage {
         CommonHelpers.checkNotRequired("Контактное лицо");
     }
 
-    @Step("Проверка, что перешли в нужный раздел")
+    @Step("Проверка, что перешли в нужный раздел. Название раздела {nameChapter}")
     public static void checkChapter(String nameChapter){
         $(By.xpath("//h2[. = '" + nameChapter + "']")).shouldBe(visible);
     }

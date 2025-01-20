@@ -5,7 +5,7 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.*;
 import steps.IndividualSteps;
 
-public class TK_A1 extends CreateIndividual {
+public class TK_A1Test extends CreateIndividual {
 
     @Test
     @Description("Создание физического лица")
