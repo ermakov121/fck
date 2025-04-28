@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  tests:
+    build: .
+    container_name: test-runner
+    environment:
+      - APIURL=https://xn--e1atd.xn--b1aedfedwqbdfbnzkf0oe.xn--p1ai
+      - DBURL=jdbc:mysql://192.168.30.111:3306/db_auto
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: mvn test

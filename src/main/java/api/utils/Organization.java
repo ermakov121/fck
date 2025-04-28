@@ -1,21 +1,20 @@
 package api.utils;
 
-import io.restassured.response.Response;
+import models.OrganizationResponse;
 
-import static io.restassured.RestAssured.given;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Organization {
-    public static Response getOrganizations(int limit, int offset, String updatedAtFrom, String updatedAtTo) {
-        return given()
-                .spec(BaseTest.spec) // Используем спецификацию
-                .queryParam("limit", limit)
-                .queryParam("offset", offset)
-                .queryParam("updated_at_from", updatedAtFrom)
-                .queryParam("updated_at_to", updatedAtTo)
-                .when()
-                .get()
-                .then()
-                .extract()
-                .response();
-    }
+//    public static OrganizationResponse getOrganizations(int limit, int offset, String updatedAtFrom, String updatedAtTo) {
+//
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("limit", limit);
+//        params.put("offset", offset);
+//        params.put("updated_at_from", updatedAtFrom);
+//        params.put("updated_at_to", updatedAtTo);
+//
+//        return BaseTest.getRequest("/api/v1/crm/organizations/", params, OrganizationResponse.class);
+//    }
 }

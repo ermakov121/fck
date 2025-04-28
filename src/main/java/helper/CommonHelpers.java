@@ -38,6 +38,11 @@ public class CommonHelpers {
     }
 
     public static String getConfig(String key) {
+        //Сначала проверяем, есть ли значение в переменных окружения
+        String envValue = System.getenv(key.toUpperCase());
+        if (envValue != null && !envValue.isEmpty()) {
+            return envValue;
+        }
         return properties.getProperty(key);
     }
 
