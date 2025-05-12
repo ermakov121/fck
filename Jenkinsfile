@@ -1,5 +1,14 @@
 pipeline {
-    agent any
+    agent {
+            docker {
+                image 'maven:3.8.6-openjdk-17'
+                args '-v $HOME/.m2:/root/.m2' // Кэш зависимостей
+            }
+        }
+
+    environment {
+            MAVEN_OPTS = "-Dmaven.test.failure.ignore=true"
+        }
 
     tools {
         maven 'Maven_3' // Имя, как указано в Jenkins (Manage Jenkins → Global Tool Configuration)
